@@ -10,10 +10,11 @@
   <style>
     :root {
       --accent: #eb9123;
-      --glass-bg: rgba(255, 255, 255, 0.2);
-      --glass-border: rgba(235, 145, 35, 0.1);
-      --text-color: #2d2d2d;
-      --gradient-bg: linear-gradient(135deg, rgba(235, 145, 35, 0.1), rgba(255, 255, 255, 0.3));
+      --glass-bg: rgba(30, 30, 30, 0.5);
+      --glass-border: rgba(235, 145, 35, 0.2);
+      --text-color: #f0f0f0;
+      --gradient-bg: linear-gradient(135deg, rgba(20, 20, 20, 0.9), rgba(40, 40, 40, 0.9));
+      --hover-bg: rgba(235, 145, 35, 0.3);
     }
 
     * {
@@ -50,7 +51,7 @@
       max-width: 420px;
       width: 100%;
       text-align: center;
-      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
       position: relative;
       overflow: hidden;
       animation: slideUp 1.5s ease;
@@ -68,7 +69,7 @@
       object-fit: cover;
       border: 3px solid var(--accent);
       margin-bottom: 1.2rem;
-      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
       animation: float 3s ease-in-out infinite;
     }
 
@@ -90,7 +91,7 @@
     }
 
     .services-box {
-      background: rgba(255, 255, 255, 0.15);
+      background: rgba(0, 0, 0, 0.3);
       border: 1px solid var(--glass-border);
       border-radius: 12px;
       padding: 0.5rem;
@@ -102,6 +103,7 @@
     .services-box p {
       font-size: 0.9rem;
       margin: 0.5rem 0;
+      color: #ddd;
     }
 
     .socials {
@@ -138,7 +140,7 @@
       text-decoration: none;
       font-size: 0.95rem;
       color: var(--accent);
-      background: rgba(255, 255, 255, 0.1);
+      background: rgba(0, 0, 0, 0.3);
       border: 1px solid var(--glass-border);
       border-radius: 12px;
       padding: 10px 16px;
@@ -152,7 +154,7 @@
     }
 
     .links a:hover {
-      background: rgba(45, 45, 45, 0.658); /* Gray hover effect */
+      background: var(--hover-bg);
       color: #fff;
     }
 
@@ -165,7 +167,7 @@
     }
 
     details {
-      background: rgba(255, 255, 255, 0.1);
+      background: rgba(0, 0, 0, 0.3);
       border: 1px solid var(--glass-border);
       border-radius: 12px;
       padding: 8px 12px;
@@ -174,7 +176,7 @@
       cursor: pointer;
       max-width: 300px;
       width: 100%;
-      text-align: center; /* Center the entire details element */
+      text-align: center;
     }
 
     details summary {
@@ -211,7 +213,7 @@
     details a {
       display: block;
       padding: 6px 0;
-      color: var(--text-color);
+      color: #ddd;
       font-size: 0.9rem;
       transition: color 0.3s;
       text-decoration: none;
@@ -227,7 +229,8 @@
       border: none;
       border-radius: 16px;
       margin-top: 1.5rem;
-      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+      filter: grayscale(20%) contrast(110%) brightness(90%);
     }
 
     .address {
@@ -238,6 +241,7 @@
       justify-content: center;
       gap: 0.5rem;
       font-size: 0.9rem;
+      color: #ccc;
     }
 
     @media (max-width: 480px) {
