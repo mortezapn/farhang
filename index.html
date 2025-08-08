@@ -4,6 +4,9 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>کتاب فروشی فرهنگ</title>
+  <link href="https://cdn.fontcdn.ir/Font/Persian/Vazir/Vazir.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous" />
+
   <style>
     :root {
       --accent: #eb9123;
@@ -30,12 +33,17 @@
       padding: 20px;
       color: var(--text-color);
       background-attachment: fixed;
+      animation: fadeInBody 2s ease;
+    }
+
+    @keyframes fadeInBody {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
     }
 
     .card {
       background: var(--glass-bg);
       backdrop-filter: blur(20px);
-      -webkit-backdrop-filter: blur(20px);
       border: 1px solid var(--glass-border);
       border-radius: 20px;
       padding: 2.5rem;
@@ -45,17 +53,12 @@
       box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
       position: relative;
       overflow: hidden;
+      animation: slideUp 1.5s ease;
     }
 
-    .card::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: radial-gradient(circle, rgba(255, 255, 255, 0.2) 0%, transparent 70%);
-      pointer-events: none;
+    @keyframes slideUp {
+      from { opacity: 0; transform: translateY(50px); }
+      to { opacity: 1; transform: translateY(0); }
     }
 
     .card img {
@@ -66,19 +69,24 @@
       border: 3px solid var(--accent);
       margin-bottom: 1.2rem;
       box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+      animation: float 3s ease-in-out infinite;
     }
 
-    h1 {
-      font-size: 1.7rem;
-      margin-bottom: 0.6rem;
-      font-weight: 600;
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-5px); }
     }
 
-    .bio {
-      font-size: 0.95rem;
-      opacity: 0.9;
-      margin-bottom: 1rem;
-      line-height: 1.5;
+    h1, .bio {
+      animation: fadeIn 1.2s ease forwards;
+      opacity: 0;
+    }
+
+    h1 { animation-delay: 0.2s; }
+    .bio { animation-delay: 0.4s; }
+
+    @keyframes fadeIn {
+      to { opacity: 1; }
     }
 
     .services-box {
@@ -92,19 +100,8 @@
     }
 
     .services-box p {
+      font-size: 0.9rem;
       margin: 0.5rem 0;
-      font-size: 0.9rem;
-      line-height: 1.9;
-    }
-
-    .address {
-      font-size: 0.9rem;
-      opacity: 0.75;
-      margin-bottom: 1.5rem;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 0.5rem;
     }
 
     .socials {
@@ -118,12 +115,18 @@
       color: var(--accent);
       font-size: 1.4rem;
       text-decoration: none;
+      animation: pulse 2s infinite;
       transition: transform 0.3s ease, color 0.3s ease;
     }
 
     .socials a:hover {
       color: #fff;
       transform: scale(1.2);
+    }
+
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.1); }
     }
 
     .links a {
@@ -143,14 +146,79 @@
       max-width: 300px;
       transition: all 0.3s ease;
       backdrop-filter: blur(10px);
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeUp 0.6s ease forwards;
     }
 
     .links a:hover {
-      background: var(--accent);
+      background: rgba(45, 45, 45, 0.658); /* Gray hover effect */
       color: #fff;
-      border-color: var(--accent);
-      transform: translateY(-2px);
-      box-shadow: 0 4px 15px rgba(235, 145, 35, 0.3);
+    }
+
+    .links a:nth-child(1) { animation-delay: 0.5s; }
+    .links a:nth-child(2) { animation-delay: 0.7s; }
+    .links a:nth-child(3) { animation-delay: 0.9s; }
+
+    @keyframes fadeUp {
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    details {
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid var(--glass-border);
+      border-radius: 12px;
+      padding: 8px 12px;
+      margin: 10px auto;
+      backdrop-filter: blur(8px);
+      cursor: pointer;
+      max-width: 300px;
+      width: 100%;
+      text-align: center; /* Center the entire details element */
+    }
+
+    details summary {
+      font-size: 0.95rem;
+      font-weight: 500;
+      color: var(--accent);
+      cursor: pointer;
+      list-style: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      padding: 0;
+      outline: none;
+    }
+
+    details[open] summary::after {
+      content: "▲";
+      font-size: 0.8em;
+      margin-right: 5px;
+    }
+
+    details:not([open]) summary::after {
+      content: "▼";
+      font-size: 0.8em;
+      margin-right: 5px;
+    }
+
+    details .dropdown-content {
+      padding: 8px 0;
+      text-align: center;
+    }
+
+    details a {
+      display: block;
+      padding: 6px 0;
+      color: var(--text-color);
+      font-size: 0.9rem;
+      transition: color 0.3s;
+      text-decoration: none;
+    }
+
+    details a:hover {
+      color: var(--accent);
     }
 
     .map iframe {
@@ -160,6 +228,16 @@
       border-radius: 16px;
       margin-top: 1.5rem;
       box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    }
+
+    .address {
+      margin-top: 10px;
+      opacity: 0.75;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      font-size: 0.9rem;
     }
 
     @media (max-width: 480px) {
@@ -181,41 +259,36 @@
       }
     }
   </style>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css" integrity="sha512-DxV+EoADOkOygM4IR9yXP8Sb2qwgidEmeqAEmDKIOfPRQZOWbXCzLC6vjbZyy0vPisbH2SyW27+ddLVCN+OMzQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-  <link href="https://cdn.fontcdn.ir/Font/Persian/Vazir/Vazir.css" rel="stylesheet">
 </head>
 <body>
   <div class="card">
     <img src="ax.jpg" alt="تصویر پروفایل">
     <h1>کتاب فروشی فرهنگ</h1>
     <p class="bio">عرضه کننده انواع کتاب و محصولات فرهنگی</p>
-    
+
     <div class="services-box">
-      <p>• مرکز فروش کتاب های درسی از پیش دبستان تا کنکور</p>
-      <p>• مرکز فروش کتاب های تخصصی حقوق (وکالت و قضاوت)</p>
-      <!-- <p>عرضه کتاب های کودک و نوجوان، روانشناسی، رمان و ادبیات و ...</p> -->
-      <p>• برخورداری از مشاوره های تخصصی کنکور</p>
-    </div>
-
-    <p class="address"><i class="fas fa-map-marker-alt"></i> شیراز - مشیرفاطمی - ابتدای معدل - ساختمان 110</p>
-
-    <div class="socials">
-      <a href="https://www.instagram.com/farhangbook.shiraz"><i class="fab fa-instagram"></i></a>
-      <a href="#"><i class="fab fa-telegram"></i></a>
+      <p>خرید سریع و با تخفیف از طریق:</p>
     </div>
 
     <div class="links">
-      
       <a href="https://farhangbooks.ir/" target="_blank"><i class="fas fa-globe"></i> وب‌سایت فرهنگ بوک</a>
-      <a href="tel:+989173372271"><i class="fas fa-phone"></i> تماس: ۰۹۱۷۳۳۷۲۲۷۱</a>
-      <!-- <a href="mailto:your.email@example.com"><i class="fas fa-envelope"></i> ایمیل من</a> -->
-      <a href="https://wa.me/989178182268" target="_blank"><i class="fab fa-whatsapp"></i> پیام در واتساپ</a>
-      <!-- <a href="https://t.me/yourusername" target="_blank"><i class="fab fa-telegram"></i> پیام در تلگرام</a> -->
+      <a href="https://www.instagram.com/farhangbook.shiraz" target="_blank"><i class="fab fa-instagram"></i> پیام در اینستاگرام</a>
+
+      <details>
+        <summary><i class="fab fa-whatsapp"></i> پیام در واتساپ</summary>
+        <div class="dropdown-content">
+          <a href="https://wa.me/989178182268" target="_blank">۰۹۱۷۸۱۸۲۲۶۸</a>
+          <a href="https://wa.me/989173372271" target="_blank">۰۹۱۷۳۳۷۲۲۷۱</a>
+        </div>
+      </details>
+      <a href="tel:+989178182268"><i class="fas fa-phone"></i> تماس: ۰۹۱۷۸۱۸۲۲۶۸</a>
     </div>
 
     <div class="map">
-      <iframe src="https://balad.ir/embed?p=PQR6xeu2hQezbO" title="مشاهده «کتاب فروشی حقوقی فرهنگ» روی نقشه بلد" width="600" height="450" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+      <iframe src="https://balad.ir/embed?p=PQR6xeu2hQezbO" title="مشاهده روی نقشه بلد" allowfullscreen></iframe>
+      <p class="address"><i class="fas fa-map-marker-alt"></i> شیراز - مشیرفاطمی - ابتدای معدل - ساختمان 110</p>
     </div>
+
     <div class="links">
       <a href="https://balad.ir/p/PQR6xeu2hQezbO" target="_blank"><i class="fas fa-map-marked-alt"></i> موقعیت در نقشه</a>
     </div>
